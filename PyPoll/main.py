@@ -18,20 +18,24 @@
 #---------------------------------------------------------------------------------------------------------------
 
 
-# First we'll import the os module
-# This will allow us to create file paths across operating systems
+# FIRST IMPORT MODULES
 import os
-print(os.listdir('../../'))
-
-# Module for reading CSV files
 import csv
 
+# FIND FILE PATHS 
+print(os.listdir('../'))
+
+# ASSIGN FILE PATH
 #C:\Users\JPHeb\JPH-Data-Class\du-den-data-pt-03-2020-u-c\Homework-3-Python\PyBank\Resources
 csvpath = os.path.join('C:/Users/JPHeb/JPH-Data-Class/du-den-data-pt-03-2020-u-c/Homework-3-Python/PyPoll/Resources/election_data.csv')
 
-# Open the CSV
+# CREATE BLANK VARIABLES 
+polling_info={}
+total_votes = 0
+
+# OPEN ELECTION_DATA AS ELECTION_CSV
 with open(csvpath) as election_csv:
-    csvreader = csv.reader(election_csv,"r", delimiter=",")
+    csvreader = csv.reader(election_csv, delimiter=",")
 
     # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
