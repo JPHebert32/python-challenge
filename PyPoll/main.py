@@ -31,8 +31,7 @@ csvpath = os.path.join('C:/Users/JPHeb/JPH-Data-Class/du-den-data-pt-03-2020-u-c
 
 # CREATE BLANK VARIABLES 
 polling_info={}
-total_votes = 0
-
+casted_votes = 0
 # OPEN ELECTION_DATA AS ELECTION_CSV
 with open(csvpath) as election_csv:
     csvreader = csv.reader(election_csv, delimiter=",")
@@ -41,9 +40,8 @@ with open(csvpath) as election_csv:
     csv_header = next(csvreader)
     print(f"{csv_header}")
 
-def Total_Votes():
-    """ Find Total Votes"""
-
-def Candidate_Count():
-    """ Counts votes for each Candidant"""
-
+    for row in csvreader:
+        casted_votes += 1
+        print(casted_votes)
+        print(len(row[0]))
+    
