@@ -43,5 +43,5 @@ with open(csvpath) as election_csv:
     for row in csvreader:
         casted_votes += 1
         print(casted_votes)
-        print(len(row[0]))
+      
     
