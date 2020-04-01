@@ -18,30 +18,47 @@
 # First we'll import the os module
 # This will allow us to create file paths across operating systems
 import os
-#print(os.listdir('../../'))
+print(os.listdir('../../'))
 
 
 # Module for reading CSV files
 import csv
 
 #C:\Users\JPHeb\JPH-Data-Class\du-den-data-pt-03-2020-u-c\Homework-3-Python\PyBank\Resources
-csvpath = os.path.join('C:/Users/JPHeb/JPH-Data-Class/du-den-data-pt-03-2020-u-c/Homework-3-Python/PyBank/Resources/budget_data.csv')
-
+csvpath = os.path.join('./PyBank/Resources/budget_data.csv')
 
 P_and_L = 0
 months = 0
+
+
 # Open the CSV
 with open(csvpath) as budget_csv:
     csvreader = csv.reader(budget_csv, delimiter=",")
 
     # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
-    #print(f"{csv_header}")
+    print(f"{csv_header}")
 
     # COUNT MONTHS AND SUM P&L
+    row_num = next(csvreader[1])
+    prev_val = row_now[1]
+    print(row_num[1])
+    
     for row in csvreader:
         P_and_L = P_and_L + int(row[1])
         months = months + 1
+
+        # ASSIGN VARIABLES FOR INCREASE, DECREASE, AND NET CHANGE
+        change_PL=int(row[1]) - int(prev_val)
+        print(change_PL)
+        row_num = row[1]
+
+        max_PL = row[1]
+        print(max_PL)
+        min_PL= row[1]   
+        print(min_PL) 
+        break
+       
 
 print(F'Financial Analysis')
 print("----------------------------")
