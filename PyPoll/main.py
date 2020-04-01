@@ -29,9 +29,6 @@ print(os.listdir('../'))
 #C:\Users\JPHeb\JPH-Data-Class\du-den-data-pt-03-2020-u-c\Homework-3-Python\PyBank\Resources
 csvpath = os.path.join('C:/Users/JPHeb/JPH-Data-Class/du-den-data-pt-03-2020-u-c/Homework-3-Python/PyPoll/Resources/election_data.csv')
 
-# CREATE BLANK VARIABLES 
-polling_info={}
-casted_votes = 0
 # OPEN ELECTION_DATA AS ELECTION_CSV
 with open(csvpath) as election_csv:
     csvreader = csv.reader(election_csv, delimiter=",")
@@ -40,8 +37,36 @@ with open(csvpath) as election_csv:
     csv_header = next(csvreader)
     print(f"{csv_header}")
 
+#initializing the variables 
+casted_ballot={}
+total_votes = 0
+
+
+with open(csvpath, delimiter=",") as Poll_csv:
+    csvread = csv.reader(Poll_csv)
+    next(csvread, None)
+
+    # Total Number of votes
     for row in csvreader:
-        casted_votes += 1
-        print(casted_votes)
-      
+        total_votes += 1
+        print(total_votes)
+
+    # 
+    for row in csvread:
+        total_votes += 1
+        if row[2] in casted_ballot.keys():
+            casted_ballot[row[2]] = casted_ballot[row[2]] + 1
+        else:
+            casted_ballot[row[2]] = 1 
+    
+
+candidates = []  
+canidate_total_votes = []
+
+for key, value in casted_ballot.items():
+    candidates.append(key)
+    canidate_total_votes.append(value)
+        
+    
+    
     
