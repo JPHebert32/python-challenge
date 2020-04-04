@@ -65,8 +65,8 @@ Average_Change = Total_Diff / diff_count
 print(f'Financial Analysis')
 print('----------------------------')
 print(f'Total Months: {total_months}')  #86
-print(f'TOTAL P&L: {total}') # $38382578
-print(f'Average  Change: ${round(Average_Change, 2)}') #$-2315.12
+print(f'TOTAL P&L: ${total}') # $38382578
+print(f'Average Change: ${round(Average_Change, 2)}') #$-2315.12
 print(f'Greatest Increase in Profits: {date[Increase_index]}  ${Increase}') #Feb-2012 ($1926159)
 print(f'Greatest Decrease in Profits: {date[Decrease_index]}  ${Decrease}') #Sep-2013 ($-2196167)
 
@@ -74,15 +74,10 @@ print(f'Greatest Decrease in Profits: {date[Decrease_index]}  ${Decrease}') #Sep
 # Writng output files
 PyBank = open('output.txt','w+')
 
-PyBank.write(f'Financial Analysis')
-PyBank.write("----------------------------")
-PyBank.write(f'Total Months: {total_months}')
-PyBank.write(f'TOTAL P&L: ${total}') 
-PyBank.write(f'Average  Change: ${round(Average_Change, 2)}')
-PyBank.write(f'Greatest Increase in Profits: {date[Increase_index]}  ${Increase}')
-PyBank.write(f'Greatest Decrease in Profits: {date[Decrease_index]}  ${Decrease}')
-
-
-# close the file written to
-
-output.txt.close()    
+PyBank.write(f'Financial Analysis\n')
+PyBank.write('----------------------------\n')
+PyBank.write(f'Total Months: {total_months}\n')
+PyBank.write(f'TOTAL P&L: ${total}\n') 
+PyBank.write(f'Average Change: ${round(Average_Change, 2)}\n')
+PyBank.write(f'Greatest Increase in Profits: {date[Increase_index]}  ${Increase}\n')
+PyBank.write(f'Greatest Decrease in Profits: {date[Decrease_index]}  ${Decrease}\n')
