@@ -9,8 +9,6 @@ import os
 import csv
 csvpath = os.path.join('C:/Users/JPHeb/JPH-Data-Class/du-den-data-pt-03-2020-u-c/Homework-3-Python/PyBank/Resources/budget_data.csv')
 
-
-P_and_L = 0
 date = []
 revenue = []
 Increase = 0
@@ -47,24 +45,31 @@ Monthly_diff =[]
 Monthly_diff = [j - i for i, j in zip(revenue[: -1], revenue[1 :])] 
 #print(Monthly_diff)
 
-#Find Greatest Increase & Greateast Decrease Using MAX and Min on Monthly_Diff
-#print(max(Monthly_diff))
-#print(min(Monthly_diff))
+#Find Greatest Increase Using MAX on Monthly_Diff
+Increase = (max(Monthly_diff))
+
+#Find corresponding Date Index for INCREASE
+Increase_index = (Monthly_diff.index(Increase)) +1
+
+#Find Greatest Decrease Using min on Monthly_Diff
+Decrease = (min(Monthly_diff))
+
+#Find corresponding Date Index for DECREASE
+Decrease_index =(Monthly_diff.index(Decrease)) +1
 
 
+#Calulating Average Change 
 Total_Diff = sum(Monthly_diff)
 diff_count = len(Monthly_diff)
 Average_Change = Total_Diff / diff_count
 
 
-
-
-
 print(f'Financial Analysis')
 print("----------------------------")
 print(f'Total Months: {total_months}')  #86
-print(f'TOTAL P&L: {total}') # $
-print(f'Average  Change: ${Average_Change}') #$-2315.12
-print(f'Greatest Increase in Profits: **DATE**  ${max(Monthly_diff)}') #Feb-2012 ($1926159)
-print(f'Greatest Decrease in Profits: **DATE**  ${min(Monthly_diff)}') #Sep-2013 ($-2196167)
+print(f'TOTAL P&L: {total}') # $38382578
+print(f'Average  Change: ${round(Average_Change, 2)}') #$-2315.12
+print(f'Greatest Increase in Profits: {date[Increase_index]}  ${Increase}') #Feb-2012 ($1926159)
+print(f'Greatest Decrease in Profits: {date[Decrease_index]}  ${Decrease}') #Sep-2013 ($-2196167)
+
 
