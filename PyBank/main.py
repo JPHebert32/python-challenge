@@ -3,8 +3,6 @@
 import os
 #print(os.listdir('../../'))
 
-
-
 # Module for reading CSV files
 import csv
 csvpath = os.path.join('C:/Users/JPHeb/JPH-Data-Class/du-den-data-pt-03-2020-u-c/Homework-3-Python/PyBank/Resources/budget_data.csv')
@@ -17,7 +15,7 @@ Average_Change = float(0)
 
 # Open the CSV
 with open(csvpath) as budget_csv:
-    csvreader = csv.reader(budget_csv, delimiter=",")
+    csvreader = csv.reader(budget_csv, delimiter=',')
 
     # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
@@ -65,7 +63,7 @@ Average_Change = Total_Diff / diff_count
 
 
 print(f'Financial Analysis')
-print("----------------------------")
+print('----------------------------')
 print(f'Total Months: {total_months}')  #86
 print(f'TOTAL P&L: {total}') # $38382578
 print(f'Average  Change: ${round(Average_Change, 2)}') #$-2315.12
@@ -73,3 +71,18 @@ print(f'Greatest Increase in Profits: {date[Increase_index]}  ${Increase}') #Feb
 print(f'Greatest Decrease in Profits: {date[Decrease_index]}  ${Decrease}') #Sep-2013 ($-2196167)
 
 
+# Writng output files
+PyBank = open('output.txt','w+')
+
+PyBank.write(f'Financial Analysis')
+PyBank.write("----------------------------")
+PyBank.write(f'Total Months: {total_months}')
+PyBank.write(f'TOTAL P&L: ${total}') 
+PyBank.write(f'Average  Change: ${round(Average_Change, 2)}')
+PyBank.write(f'Greatest Increase in Profits: {date[Increase_index]}  ${Increase}')
+PyBank.write(f'Greatest Decrease in Profits: {date[Decrease_index]}  ${Decrease}')
+
+
+# close the file written to
+
+output.txt.close()    
