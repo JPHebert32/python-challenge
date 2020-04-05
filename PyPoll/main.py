@@ -23,50 +23,37 @@ import os
 import csv
 
 # FIND FILE PATHS 
-print(os.listdir('../'))
+#print(os.listdir('../'))
 
 # ASSIGN FILE PATH
 #C:\Users\JPHeb\JPH-Data-Class\du-den-data-pt-03-2020-u-c\Homework-3-Python\PyBank\Resources
 csvpath = os.path.join('C:/Users/JPHeb/JPH-Data-Class/du-den-data-pt-03-2020-u-c/Homework-3-Python/PyPoll/Resources/election_data.csv')
 
-# OPEN ELECTION_DATA AS ELECTION_CSV
-with open(csvpath) as election_csv:
-    csvreader = csv.reader(election_csv, delimiter=",")
-
-    # Read the header row first (skip this step if there is no header)
-    csv_header = next(csvreader)
-    print(f"{csv_header}")
-
 #initializing the variables 
-casted_ballot={}
+results = {}
 total_votes = 0
+candidates = []  
+total_candidates_votes = []
 
 
-with open(csvpath, delimiter=",") as Poll_csv:
-    csvread = csv.reader(Poll_csv)
+# OPEN ELECTION_DATA AS ELECTION_CSV
+with open(csvpath, 'r') as election_csv:
+    csvread = csv.reader(election_csv)
     next(csvread, None)
 
-    # Total Number of votes
-    for row in csvreader:
-        total_votes += 1
-        print(total_votes)
-
-    # 
     for row in csvread:
         total_votes += 1
-        if row[2] in casted_ballot.keys():
-            casted_ballot[row[2]] = casted_ballot[row[2]] + 1
+        if row[2] in results.keys():
+            results[row[2]] = results[row[2]] + 1
         else:
-            casted_ballot[row[2]] = 1 
-    
+            results[row[2]] = 1 
 
-candidates = []  
-canidate_total_votes = []
 
-for key, value in casted_ballot.items():
+# Find Total Number of votes for each Candidate
+for key, value in results.items():
     candidates.append(key)
-    canidate_total_votes.append(value)
-        
-    
-    
-    
+    print(candidates)                             # ['Khan', 'Correy', 'Li', "O'Tooley"]
+    total_candidates_votes.append(value)
+    print(total_candidates_votes)                 # [2218231, 704200, 492940, 105630]
+
+
