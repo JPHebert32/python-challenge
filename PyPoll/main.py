@@ -62,6 +62,33 @@ for key, value in results.items():
         percentage_votes.append(round(i/total_votes * 100, 1))
         #print(percentage_votes)                      #  [63.0, 20.0, 14.0, 3.0]
  
-    # Finding the winner
-    final_results = zip(candidates, total_candidates_votes, percentage_votes)
+    # Zip list together for final results
+    offical_results = zip(candidates, total_candidates_votes, percentage_votes)
+
+
+
+  # Print all data
+print("Election results")
+print("-----------------------------------")
+print(f"Total Votes:   ({total_votes})") #3521001
+print("-----------------------------------")
+print(f"{candidates[0]}:     {percentage_votes[0]}% ({total_candidates_votes[0]})")      #Khan: 63.000% (2218231)
+print(f"{candidates[1]}:   {percentage_votes[1]}%  ({total_candidates_votes[1]})")      #Correy: 20.000% (704200)
+print(f"{candidates[2]}:       {percentage_votes[2]}%  ({total_candidates_votes[2]})")  #Li: 14.000% (492940)
+print(f"{candidates[3]}:  {percentage_votes[3]}%  ({total_candidates_votes[3]})")       #O'Tooley: 3.000% (105630)
+print("-----------------------------------")
+print(f"Winner: {candidate[0]}") #Khan
+
+# Writng output files
+PyPoll = open('output.txt','w+')
+PyPoll.write("Election results\n")
+PyPoll.write("-----------------------------------\n")
+PyPoll.write(f"Total Votes:   ({total_votes})\n") #3521001
+PyPoll.write("-----------------------------------")
+PyPoll.write(f"{candidates[0]}:     {percentage_votes[0]}% ({total_candidates_votes[0]})\n")
+PyPoll.write(f"{candidates[1]}:   {percentage_votes[1]}%  ({total_candidates_votes[1]})\n")
+PyPoll.write(f"{candidates[2]}:       {percentage_votes[2]}%  ({total_candidates_votes[2]})\n")
+PyPoll.write(f"{candidates[3]}:  {percentage_votes[3]}%  ({total_candidates_votes[3]})\n")
+PyPoll.write("-----------------------------------\n")
+PyPoll.write(f"Winner: {candidate[0]}\n")
 
