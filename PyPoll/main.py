@@ -38,22 +38,25 @@ total_candidates_votes = []
 
 # OPEN ELECTION_DATA AS ELECTION_CSV
 with open(csvpath, "r") as election_csv:
-    csvread = csv.reader(election_csv)
-    next(csvread, None)
-
-    for row in csvread:
-        total_votes += 1                            #ADD 1 TO TOTAL VOTES
+    csvreader = csv.reader(election_csv)
+    next(csvreader, None)
+    
+    # Use a for-loop to iterate through a CSV file and increment a counter, total_votes, during each iteration.
+    for row in csvreader:
+        total_votes += 1       #ADD 1 TO TOTAL VOTES
+                             
         if row[2] in results.keys():
-            results[row[2]] = results[row[2]] + 1
+            results[row[2]] = results[row[2]] + 1   # Fills dictionary   Key"Candidate" : Vaule "Candidate Votes" 
+            #print(results)    Prints Dictonary as it increments though the csv
         else:
             results[row[2]] = 1 
 
 
 # Find Total Number of votes for each Candidate
 for key, value in results.items():
-    candidates.append(key)
+    candidates.append(key)                         # Fills Candidate list with KEY
     #print(candidates)                             # ['Khan', 'Correy', 'Li', "O'Tooley"]
-    total_candidates_votes.append(value)
+    total_candidates_votes.append(value)           # Fills total_candidate_votes with Value
     #print(total_candidates_votes)                 # [2218231, 704200, 492940, 105630]
 
 # Find Percentage of votes for each Candidate
@@ -70,7 +73,7 @@ for key, value in results.items():
   # Print all data
 print("Election results")
 print("-----------------------------------")
-print(f"Total Votes:   ({total_votes})") #3521001
+print(f"Total Votes:    ({total_votes})") #3521001
 print("-----------------------------------")
 print(f"{candidates[0]}:     {percentage_votes[0]}% ({total_candidates_votes[0]})")      #Khan: 63.000% (2218231)
 print(f"{candidates[1]}:   {percentage_votes[1]}%  ({total_candidates_votes[1]})")      #Correy: 20.000% (704200)
@@ -91,4 +94,3 @@ PyPoll.write(f"{candidates[2]}:       {percentage_votes[2]}%  ({total_candidates
 PyPoll.write(f"{candidates[3]}:  {percentage_votes[3]}%  ({total_candidates_votes[3]})\n")
 PyPoll.write("-----------------------------------\n")
 PyPoll.write(f"Winner: {candidates[0]}\n")
-
