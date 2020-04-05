@@ -77,7 +77,7 @@ print(f"{candidates[1]}:   {percentage_votes[1]}%  ({total_candidates_votes[1]})
 print(f"{candidates[2]}:       {percentage_votes[2]}%  ({total_candidates_votes[2]})")  #Li: 14.000% (492940)
 print(f"{candidates[3]}:  {percentage_votes[3]}%  ({total_candidates_votes[3]})")       #O'Tooley: 3.000% (105630)
 print("-----------------------------------")
-print(f"Winner: {candidate[0]}") #Khan
+print(f"Winner: {candidates[0]}") #Khan
 
 # Writng output files
 PyPoll = open('output.txt','w+')
@@ -90,5 +90,5 @@ PyPoll.write(f"{candidates[1]}:   {percentage_votes[1]}%  ({total_candidates_vot
 PyPoll.write(f"{candidates[2]}:       {percentage_votes[2]}%  ({total_candidates_votes[2]})\n")
 PyPoll.write(f"{candidates[3]}:  {percentage_votes[3]}%  ({total_candidates_votes[3]})\n")
 PyPoll.write("-----------------------------------\n")
-PyPoll.write(f"Winner: {candidate[0]}\n")
+PyPoll.write(f"Winner: {candidates[0]}\n")
 
