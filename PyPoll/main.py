@@ -42,7 +42,7 @@ with open(csvpath, 'r') as election_csv:
     next(csvread, None)
 
     for row in csvread:
-        total_votes += 1
+        total_votes += 1                            #ADD 1 TO TOTAL VOTES
         if row[2] in results.keys():
             results[row[2]] = results[row[2]] + 1
         else:
@@ -52,8 +52,16 @@ with open(csvpath, 'r') as election_csv:
 # Find Total Number of votes for each Candidate
 for key, value in results.items():
     candidates.append(key)
-    print(candidates)                             # ['Khan', 'Correy', 'Li', "O'Tooley"]
+    #print(candidates)                             # ['Khan', 'Correy', 'Li', "O'Tooley"]
     total_candidates_votes.append(value)
-    print(total_candidates_votes)                 # [2218231, 704200, 492940, 105630]
+    #print(total_candidates_votes)                 # [2218231, 704200, 492940, 105630]
 
+# Find Percentage of votes for each Candidate
+    percentage_votes = []
+    for i in total_candidates_votes:
+        percentage_votes.append(round(i/total_votes * 100, 1))
+        #print(percentage_votes)                      #  [63.0, 20.0, 14.0, 3.0]
+ 
+    # Finding the winner
+    final_results = zip(candidates, total_candidates_votes, percentage_votes)
 
