@@ -27,7 +27,7 @@ import csv
 
 # ASSIGN FILE PATH
 #C:\Users\JPHeb\JPH-Data-Class\du-den-data-pt-03-2020-u-c\Homework-3-Python\PyBank\Resources
-csvpath = os.path.join('C:/Users/JPHeb/JPH-Data-Class/du-den-data-pt-03-2020-u-c/Homework-3-Python/PyPoll/Resources/election_data.csv')
+csvpath = os.path.join("C:/Users/JPHeb/JPH-Data-Class/du-den-data-pt-03-2020-u-c/Homework-3-Python/PyPoll/Resources/election_data.csv")
 
 #initializing the variables 
 results = {}
@@ -37,7 +37,7 @@ total_candidates_votes = []
 
 
 # OPEN ELECTION_DATA AS ELECTION_CSV
-with open(csvpath, 'r') as election_csv:
+with open(csvpath, "r") as election_csv:
     csvread = csv.reader(election_csv)
     next(csvread, None)
 
@@ -80,11 +80,11 @@ print("-----------------------------------")
 print(f"Winner: {candidates[0]}") #Khan
 
 # Writng output files
-PyPoll = open('output.txt','w+')
+PyPoll = open("output.txt","w+")
 PyPoll.write("Election results\n")
 PyPoll.write("-----------------------------------\n")
-PyPoll.write(f"Total Votes:   ({total_votes})\n") #3521001
-PyPoll.write("-----------------------------------")
+PyPoll.write(f"Total Votes:   ({total_votes})\n") 
+PyPoll.write("-----------------------------------\n")
 PyPoll.write(f"{candidates[0]}:     {percentage_votes[0]}% ({total_candidates_votes[0]})\n")
 PyPoll.write(f"{candidates[1]}:   {percentage_votes[1]}%  ({total_candidates_votes[1]})\n")
 PyPoll.write(f"{candidates[2]}:       {percentage_votes[2]}%  ({total_candidates_votes[2]})\n")
